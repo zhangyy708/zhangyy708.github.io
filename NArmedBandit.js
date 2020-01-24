@@ -9,7 +9,8 @@ $(document).ready(function () {
     var fadeTime = 500; // fade out time (after reward being displayed in each trial)
     var stayTime = 500; // result stay time (after reward being displayed in each trial)
 
-    var numArms = 2; // number of arms
+    // var numArms = 2; // number of arms
+    
 
     // styling --------------------------------------------------------------------------------------------------------------
     var thisHeight = $(document).height() * 0.9;
@@ -19,9 +20,49 @@ $(document).ready(function () {
     $('#Main').css('min-height', thisHeight);
     $('#Main').css('width', thisWidth);
 
+    // testing();
+    var numArms = para();
     // information();
     // instructions(1);
-    options(1);
+    // options(1);
+
+    // choosing parametres ---------------------------------------------------------------------------------------------------
+    function para() {
+        $('#Top').css('height', thisHeight / 20);
+        $('#Stage').css('width', dispWidth);
+        $('#Stage').css('min-height', thisHeight * 17 / 20);
+        $('#Bottom').css('min-height', thisHeight / 20);
+        createDiv('Stage', 'TextBoxDiv');
+
+        var title = '<h3 align="center">Choosing parametres for testing the experiment</h3>'; 
+        var info = 'Number of arms:<br>'; 
+        // $('#TextBoxDiv').html(title + info);
+
+        var buttons = '<div align="center"><input align="center" type="button" class="btn btn-default" id="num2"' + 
+            ' value="2"><input align="center" type="button" class="btn btn-default" id="num4" value="4"></div>';
+        $('#TextBoxDiv').html(title + info + buttons); 
+
+        var numArms = 2;
+
+        $('#num2').click(function () {
+            numArms = 2;
+            $('#TextBoxDiv').remove();
+            $('#Stage').empty();
+            $('#Bottom').empty();
+            information();
+        });
+
+        $('#num4').click(function () {
+            numArms = 4;
+            $('#TextBoxDiv').remove();
+            $('#Stage').empty();
+            $('#Bottom').empty();
+            information();
+        });
+
+        return numArms;
+    };
+
 
     // information page ------------------------------------------------------------------------------------------------------
     function information() {
@@ -30,6 +71,7 @@ $(document).ready(function () {
         $('#Stage').css('min-height', thisHeight * 17 / 20);
         $('#Bottom').css('min-height', thisHeight / 20);
         createDiv('Stage', 'TextBoxDiv');
+
         var title = '<h3 align="center">Information page for participants in research studies</h3>'; // header
         var info = 'Here is a lot of information about the experiment.'; // information content
         $('#TextBoxDiv').html(title + info);
@@ -55,15 +97,15 @@ $(document).ready(function () {
         createDiv('Stage', 'TextBoxDiv');
         var title = '<h3 align="center">Consent form for participants in research studies</h3>'; // header
         var info = 'Please read the following criteria and tick all boxes. <br><br>'; // consent content
-        var ticks = '<input type="checkbox" name="consent" value="consent1">I have read the information page.<br>' +
-            '<input type="checkbox" name="consent" value="consent2">I have had the opportunity to contact the' + 
-                ' researcher to ask questions and discuss the study.<br>' +
-            '<input type="checkbox" name="consent" value="consent3">I have received satisfactory answers to my' + 
-                ' questions or have been advised of an individual to contact for answers to pertinent questions' + 
-                ' about the research and my rights as a participant.<br>' +
-            '<input type="checkbox" name="consent" value="consent4">I understand that I am free to withdraw at' +　
-                ' any time, without giving a reason, and without incurring any penalty.<br>' +
-            '<input type="checkbox" name="consent" value="consent5">I am over 18 years of age.<br>'
+        var ticks = '<input type="checkbox" name="consent" value="consent1">I have read the information page.<br>' // +
+            // '<input type="checkbox" name="consent" value="consent2">I have had the opportunity to contact the' + 
+            //     ' researcher to ask questions and discuss the study.<br>' +
+            // '<input type="checkbox" name="consent" value="consent3">I have received satisfactory answers to my' + 
+            //     ' questions or have been advised of an individual to contact for answers to pertinent questions' + 
+            //     ' about the research and my rights as a participant.<br>' +
+            // '<input type="checkbox" name="consent" value="consent4">I understand that I am free to withdraw at' +　
+            //     ' any time, without giving a reason, and without incurring any penalty.<br>' +
+            // '<input type="checkbox" name="consent" value="consent5">I am over 18 years of age.<br>'
         $('#TextBoxDiv').html(title + info + ticks);
 
         var buttons = '<div align="center"><input align="center" type="button" class="btn btn-default"' +
