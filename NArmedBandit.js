@@ -42,8 +42,6 @@ $(document).ready(function () {
             ' value="2"><input align="center" type="button" class="btn btn-default" id="num4" value="4"></div>';
         $('#TextBoxDiv').html(title + info + buttons); 
 
-        var numArms = 2;
-
         $('#num2').click(function () {
             numArms = 2;
             $('#TextBoxDiv').remove();
